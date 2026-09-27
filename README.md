@@ -55,7 +55,7 @@ python3 scripts/validate_ai_video.py package path/to/project
 ## 関連スキル
 
 - [previz-maker](https://github.com/atsu-mada/previz-maker) — カメラと動線のブロックプレビズと参照プロンプト
-- [seedance-2.0](https://github.com/atsu-mada/seedance-2.0) — Seedance のプロンプト作成（Emily2040/seedance-2.0 の改変フォーク）
+- [seedance-studio](https://github.com/atsu-mada/seedance-studio) — Seedance 2.5 のプロンプト作成（Emily2040/seedance-2.0 の改変フォーク）
 
 ## 制限
 
