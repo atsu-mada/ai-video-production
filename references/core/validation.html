@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shared Validation and Stop Conditions</title>
+  <link rel="stylesheet" href="../../assets/knowledge-base.css">
+</head>
+<body>
+<main id="validation">
+  <nav aria-label="Reference navigation"><a href="../index.html">AI Video Production knowledge map</a></nav>
+  <h1 id="title">Shared Validation and Stop Conditions</h1>
+  <h2 id="production-package-validation">Production Package Validation</h2>
+  <p>Validate the smallest relevant artifact first, then validate the package that joins the artifacts.</p>
+  <ul>
+    <li>Every path in a manifest stays inside the project root. New manifest paths resolve from the project root; legacy paths beginning with <code>../</code> resolve from <code>99_manifests/</code> only through the validator's bounded compatibility rule. Cut prompts, scene prompts, and generation handoffs declare local references with Markdown links; raw path-like entries are invalid when path checking is enabled.</li>
+    <li>IDs are stable, unique within their manifest, and use the declared prefix or project convention.</li>
+    <li>Start and end times are ordered; duration equals <code>end - start</code>; overlapping cuts are deliberate and documented.</li>
+    <li>Every scene has an overview, common-asset list, image storyboard, text storyboard, cut prompts, and scene manifest when those deliverables are part of the package.</li>
+    <li>Character, environment, object, and VFX references describe one stable subject or effect family and do not silently mix incompatible states.</li>
+    <li>Environment coverage accounts for every camera start, travel path, endpoint, entrance, exit, reverse, and reflection used by the approved cuts.</li>
+    <li>Every major interactive or close-up object has one construction reference and a dedicated state reference wherever its screen, page, reflection, orientation, contact, opening, damage, or emitted effect changes.</li>
+    <li>A scene, cut, motion beat, and provider generation job use separate IDs and mappings. Provider limits do not silently renumber story scenes.</li>
+    <li>Image-only storyboards reject readable production text and arrows inside picture panels. Text storyboards retain panel order and contain exactly the required fields.</li>
+    <li>Prompt and handoff validation does not submit a generation job. Stop if fixing a validation error would require moving, overwriting, or deleting user files.</li>
+    <li>Recurring assets are not silently duplicated as scene-specific variants.</li>
+    <li>Existing drafts and unrelated files remain untouched.</li>
+  </ul>
+
+  <h2 id="run-validation">Run validation</h2>
+  <p>Run <code>&lt;verified-cpython-3.14&gt; scripts/validate_production_package.py &lt;project-root&gt;</code>. Stop if a target exists with conflicting content or if fixing validation would require moving or deleting user files.</p>
+  <p>Run <code>&lt;verified-cpython-3.14&gt; scripts/validate_ai_video.py &lt;mode&gt; &lt;path&gt;</code> for the selected artifact. For cut prompts, scene prompts, and generation handoffs, use <code>--check-paths --project-root &lt;project-root&gt;</code> when references must be resolved from a prompt file; the explicit root is the containment boundary. A successful path check requires at least one parsed in-root local Markdown link; explicit HTTP or HTTPS links remain external references.</p>
+<section lang="ja" aria-labelledby="evidence-states"><h2 id="evidence-states">状態と証拠を分離する</h2>
+<table><thead><tr><th>確認対象</th><th>十分な証拠</th><th>そこから推定しないこと</th></tr></thead><tbody><tr><td>プロバイダーの状態</td><td>受理・キュー・生成中・完了・失敗の実表示</td><td>映像の品質合格や保存済み</td></tr><tr><td>技術QC</td><td>実ファイル、ハッシュ、尺、映像・音声ストリーム</td><td>演技、連続性、口形同期の合格</td></tr><tr><td>知覚レビュー</td><td>対象区間を再生して観測した判断と根拠</td><td>人による採用承認</td></tr><tr><td>採用・編集</td><td>承認参照と版を固定した選択リスト</td><td>保存・書き出し・公開済み</td></tr><tr><td>保存・書き出し・公開</td><td>それぞれの操作結果と対象の再確認</td><td>他の工程も完了したこと</td></tr></tbody></table><p>未確認は未確認のまま残す。技術情報が正しく、元音声と出力音声が一致していても、口形の同期が未視聴なら合格にしない。<a href="editorial-handoff.html">編集用の記録検査</a>と、人の観測・承認は別である。</p></section>
+</main>
+</body>
+</html>

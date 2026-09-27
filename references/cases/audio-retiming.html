@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>事例：音声が映像枠に収まらない</title>
+<link rel="stylesheet" href="../../assets/knowledge-base.css">
+</head>
+<body><main id="cases-audio-retiming">
+<nav aria-label="Reference navigation"><a href="../index.html">AI Video Production knowledge map</a></nav>
+<h1 id="title">事例：音声が映像枠に収まらない</h1>
+<p>過去の制作記録を匿名化した例。新しい音声を聴いた結果や現在のプロバイダー上限を示すものではない。</p>
+<h2 id="observation">観測</h2><p>22秒の映像枠に対し、採用候補の音声は23.249秒だった。別の29秒枠に対応すると仮定した音声は16.379秒だった。原稿との対応は、実尺だけで確定していない。</p>
+<h2 id="decision">設計判断</h2><p>内容の照合後、前者を24秒枠へ延ばし、隣接する無音部分から2秒を再配分する。末尾には0.751秒の余韻が残る。後者は29秒枠を保ち、12.621秒を反応や無音の余韻として設計する。これらはその作品の選択であり、全作品の固定ルールではない。</p>
+<h2 id="verify">確認</h2><p>全体尺が維持されたか、キューとカットが合うか、全関連資料が同じ改訂版かを検査する。音声ファイルのハッシュ一致は素材コピーの同一性を示すが、同期の見え方は実時間再生で確認する。</p>
+<p><a href="../core/audio-timing.html">音声と時間設計へ戻る</a></p>
+</main></body></html>

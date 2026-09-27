@@ -1,0 +1,6 @@
+interface:
+  display_name: "AI Video Production"
+  short_description: "Plan and validate AI-video production deliverables"
+  default_prompt: "Use $<ai-video-production> to plan or validate an AI-video package, reference sheet, storyboard, prompt, or generation handoff."
+policy:
+  allow_implicit_invocation: true

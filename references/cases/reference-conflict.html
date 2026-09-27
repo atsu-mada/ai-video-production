@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>事例：同じ場所が別の広場へ変わる</title>
+<link rel="stylesheet" href="../../assets/knowledge-base.css">
+</head>
+<body><main id="cases-reference-conflict">
+<nav aria-label="Reference navigation"><a href="../index.html">AI Video Production knowledge map</a></nav>
+<h1 id="title">事例：同じ場所が別の広場へ変わる</h1>
+<h2 id="observation">観測した失敗</h2><p>街路を上へ見せる動画で、中盤に人物が消え、終盤の場所が別の広場へ変化した。別テイクでも、カメラの移動やカットに伴って光の線が減り、消える様子が記録されていた。</p>
+<h2 id="hypothesis">原因仮説</h2><p>参照に含まれる広場や俯瞰構図が街路の指示と競合した可能性がある。ただし、参照の除外によって改善した結果までは確認されていない。プロンプトだけが原因、特定の参照だけが原因と断定しない。</p>
+<h2 id="comparison">比較試験の組み方</h2><p>場所の固定点、人物の移動領域、カメラ経路、VFXの接続点を先に定義する。参照の役割と除外属性を列挙し、仮説を一つ選んで変更する。参照、尺、カメラ動作を同時に変えた試験では、それぞれの効果を分離できないと記録する。</p>
+<h2 id="review">評価</h2><p>先頭と末尾だけでなく中盤も確認し、ランドマーク、人物、接続点、線の連続性を追う。技術的に再生可能でも、同じ場所・人物・効果が保てなければ演出上は不合格とする。</p>
+<p><a href="../core/continuity.html#reference-scope">参照の範囲と継承</a></p>
+</main></body></html>

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VFX Sheet</title>
+  <link rel="stylesheet" href="../../assets/knowledge-base.css">
+</head>
+<body>
+<main id="vfx-sheet">
+  <nav aria-label="Reference navigation"><a href="../index.html">AI Video Production knowledge map</a></nav>
+  <h1 id="title">VFX Sheet</h1>
+  <p>Create one reference board for one reusable visual effect or compatible effect family on a uniform black background suitable for compositing review. Set exactly one resolved <code>VFX TOPOLOGY:</code> field naming that effect or family, then lock its source, silhouette or geometry, scale, palette, material response, optical behavior, compatible states, and transition logic.</p>
+  <p>Use enough views or states to explain the effect without adding a scene. Keep background black and the effect legible with controlled contrast. Exclude people, body parts, unrelated props, scenery, readable text, labels, arrows, logos, and watermarks. Keep storyboard marks separate from the finished effect design.</p>
+  <p>Start from <a href="../../assets/templates/vfx-sheet-prompt.md">vfx-sheet-prompt.md</a>. Validate with <code>&lt;verified-cpython-3.14&gt; scripts/validate_ai_video.py vfx-sheet &lt;prompt&gt; [image]</code>.</p>
+<section lang="ja" aria-labelledby="effect-continuity"><h2 id="effect-continuity">効果の連続性</h2>
+<p>効果の起点・終点・接続対象、カメラ移動中も保つ可視領域、消える条件を定義する。光の本数を増やす指示だけで連続性が保証されると考えず、途中フレームの接続と地形を確認する。絵コンテの線や矢印を効果そのものへ継承させない。</p></section>
+</main>
+</body>
+</html>

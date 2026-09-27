@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Production Package and Order</title>
+  <link rel="stylesheet" href="../../assets/knowledge-base.css">
+</head>
+<body>
+<main id="production-order">
+  <nav aria-label="Reference navigation"><a href="../index.html">AI Video Production knowledge map</a></nav>
+  <h1 id="title">Production Package and Order</h1>
+  <h2 id="scene-based-package-layout">Scene-based Package Layout</h2>
+  <p>Use this layout for a new scene-based package:</p>
+  <pre id="package-tree"><code>project/
+├── 00_master-index.md
+├── 00_common/
+│   ├── 01_style-and-production-rules/
+│   ├── 02_characters/
+│   ├── 03_environments/
+│   ├── 04_objects/
+│   └── 05_prompt-library/
+├── 01_scenes/
+│   └── SC&lt;NN&gt;_&lt;range&gt;_&lt;slug&gt;/
+│       ├── 00_scene-overview.md
+│       ├── 01_used-common-assets.md
+│       ├── 02_scene-assets/
+│       ├── 03_storyboard/
+│       ├── 04_text-storyboard/
+│       ├── 05_cut-prompts/
+│       ├── 06_scene-cut-manifest.csv
+│       └── 07_generation-handoffs/
+└── 99_manifests/
+    ├── global-asset-manifest.md
+    └── global-cut-manifest.csv</code></pre>
+
+  <h2 id="placement-test">Placement test</h2>
+  <ul>
+    <li>Recurring and independently reusable: <code>00_common</code>.</li>
+    <li>Appears only in one scene or one transient state: that scene's <code>02_scene-assets</code>.</li>
+    <li>Prompt and rendered output stay adjacent.</li>
+    <li>Older drafts remain in place unless the user explicitly requests migration or deletion.</li>
+  </ul>
+
+  <h2 id="order">Order</h2>
+  <ol>
+    <li>Lock style and timing.</li>
+    <li>Inventory recurring assets.</li>
+    <li>Create reference sheets.</li>
+    <li>Create image-only storyboard.</li>
+    <li>Create paired text storyboard.</li>
+    <li>Write cut prompts.</li>
+    <li>Generate clips and edit only when separately requested.</li>
+  </ol>
+
+  <p class="rule">Place recurring or independently reusable assets in <code>00_common/</code>. Keep transient states and scene-only assets inside the owning scene. Keep each prompt beside its declared image or video output path. Leave existing drafts in place unless migration or deletion is explicitly requested.</p>
+  <p>Build in this order: style and timing, recurring assets, environment and object references, image-only storyboard, paired text storyboard, cut prompts, scene prompt, generation handoff, then provider execution when separately requested.</p>
+</main>
+</body>
+</html>

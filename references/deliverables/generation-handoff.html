@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Generation Handoff</title>
+  <link rel="stylesheet" href="../../assets/knowledge-base.css">
+</head>
+<body>
+<main id="generation-handoff">
+  <nav aria-label="Reference navigation"><a href="../index.html">AI Video Production knowledge map</a></nav>
+  <h1 id="title">Generation Handoff</h1>
+  <p>Prepare a reviewable handoff for a separate provider execution skill. Record the provider profile, model, execution skill, input references and their roles, duration, prompt artifact, output contract, validation commands, and approval state. Keep credentials, tokens, and private account data out of the handoff.</p>
+  <p>Use Markdown links for every local <code>Input references:</code> entry and for <code>Prompt artifact:</code>; an explicit HTTP or HTTPS URL is reserved for an external reference. The handoff may identify the next provider skill and its current contract, but authoring it does not submit a job. Recheck live provider capabilities at execution time and preserve the package's reference and duration constraints. The embedded <code>Provider profile:</code> controls duration validation; an optional <code>--profile &lt;name&gt;</code> must match it. Validate with <code>&lt;verified-cpython-3.14&gt; scripts/validate_ai_video.py handoff &lt;handoff&gt; [--check-paths --project-root &lt;project-root&gt;] [--profile &lt;name&gt;]</code>.</p>
+  <h2 id="reference-record">Reference record</h2>
+  <p>For every selected input, record its upload order, provider-visible tag, role, inherited attributes, excluded attributes, and content hash. Distinguish ordinary references from start or end frames. When no boundary frame is approved, keep those roles unset rather than relabeling a normal reference. Record scene, cut range, beat range, and job ID independently so provider limits never force a story-scene renumbering.</p>
+<section lang="ja" aria-labelledby="observed-settings"><h2 id="observed-settings">計画と実際の入力を分ける</h2>
+<p>保存済みプロンプトと、実際に入力されたプロンプト・参照の順序とタグ・開始/終了フレーム・設定・ジョブIDを別々に照合する。設定の記録は観測したsurfaceと日時に紐づけ、他の画面や現在の上限へ一般化しない。生成の準備と実行の承認は分け、Processingでの引継ぎを完成扱いにしない。</p></section>
+</main>
+</body>
+</html>

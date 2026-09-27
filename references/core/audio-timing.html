@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>音声の実尺と映像の時間設計</title>
+<link rel="stylesheet" href="../../assets/knowledge-base.css">
+</head>
+<body><main id="core-audio-timing">
+<nav aria-label="Reference navigation"><a href="../index.html">AI Video Production knowledge map</a></nav>
+<h1 id="title">音声の実尺と映像の時間設計</h1>
+<p>原稿の想定尺ではなく、採用した音声の内容と実測時間から映像を設計する。ファイル名・長さだけでは原稿との対応は確定しない。試聴または照合済みの書き起こしで話者・文・言語・版を確認し、原稿IDと音声の相対パス・SHA-256・実尺を記録する。</p>
+<h2 id="clocks">3つの時間を分ける</h2>
+<table><thead><tr><th>時間軸</th><th>用途</th><th>確認</th></tr></thead><tbody>
+<tr><td>全体時間</td><td>完成作品の配置位置</td><td>前後のシーンと空白・重複がないか</td></tr>
+<tr><td>シーン内時間</td><td>カットと演技の割当</td><td>発話の着地点と映像の動作が合うか</td></tr>
+<tr><td>音声内時間</td><td>語句・休止・末尾余韻</td><td>素材の頭の無音や編集点を含むか</td></tr></tbody></table>
+<p>シーンの全体開始を S、音声をシーン内で置く時刻を O、音声内のキューを a とすると、全体キューは S + O + a。素材のトリムや速度変更がある場合は、その変換を明記して再計算する。</p>
+<h2 id="workflow">修正の順序</h2><ol>
+<li>採用音声と原稿の対応、実尺、発話の切れ目、休止、末尾を確認する。</li>
+<li>映像枠に収まらなければ、シーンの延長、隣接する無音のホールドの短縮、構成変更を比較する。無断で話速を変えない。</li>
+<li>映像枠が長ければ、余白を沈黙・反応・余韻として設計する。音声を引き伸ばして埋めない。</li>
+<li>全体時刻、シーン表、カット表、字コンテ、生成プロンプト、音声キュー、編集引継ぎを同じ版へ更新する。</li>
+<li>隣接シーンへの影響と合計尺を再検査し、同期の知覚的な確認は実時間の再生で行う。</li></ol>
+<p>ナレーション、画面内の発話、画面外の発話、テンポ参照では目的が異なる。元音声を編集で使う計画と、生成器に音声を作らせる計画を混ぜない。口形の評価は、話者の口が実際に見える区間に対して行う。</p>
+<p><a href="../cases/audio-retiming.html">匿名の尺再配分例</a> · <a href="editorial-handoff.html">編集へ渡す採用版</a></p>
+</main></body></html>

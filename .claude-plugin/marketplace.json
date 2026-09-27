@@ -1,0 +1,15 @@
+{
+  "name": "atsu-mada-ai-video-production",
+  "description": "ai-video-production agent skill by atsu-mada",
+  "owner": {
+    "name": "atsu-mada",
+    "url": "https://github.com/atsu-mada"
+  },
+  "plugins": [
+    {
+      "name": "ai-video-production",
+      "source": "./",
+      "description": "Plan and validate AI film / music-video production packages: reference sheets, storyboards, cut and scene prompts, and generation handoffs."
+    }
+  ]
+}

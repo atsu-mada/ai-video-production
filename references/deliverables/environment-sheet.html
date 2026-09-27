@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Environment Sheet</title>
+  <link rel="stylesheet" href="../../assets/knowledge-base.css">
+</head>
+<body>
+<main id="environment-sheet">
+  <nav aria-label="Reference navigation"><a href="../index.html">AI Video Production knowledge map</a></nav>
+  <h1 id="title">Environment Sheet</h1>
+  <p>Create one annotated set bible for one empty location. Keep the floor plan, openings, landmark positions, scale, palette, materials, and lighting logic fixed while camera angle changes.</p>
+  <p>Include a location ID block with name, setting, material signature, palette, landmarks, and atmosphere; one hero establishing wide; supporting reverse, high, low, detail, and character-insert views; material studies; lighting states of the same view; isolated landmarks; and a simplified top-down map. Audit every planned camera start, travel path, end position, entrance, exit, reflection, and reverse angle. Add standalone 16:9 views until the visible geography needed by every cut can be reconstructed; do not use a fixed image quota. Each added view must remain the same location as the canonical sheet. Exclude people, creatures, silhouettes, reflected people, extra rooms, impossible geometry, and invented labels.</p>
+  <p>Start from <a href="../../assets/templates/environment-sheet-prompt.md">environment-sheet-prompt.md</a>. Validate with <code>&lt;verified-cpython-3.14&gt; scripts/validate_ai_video.py environment-sheet &lt;prompt&gt; [image]</code>.</p>
+<section lang="ja" aria-labelledby="camera-path-coverage"><h2 id="camera-path-coverage">カメラ経路全域の整合</h2>
+<p>開始画角だけでなく、パン・追跡・クレーンで途中に現れる地面、通路、建物、遮蔽物、ランドマークも同じ配置に固定する。別場所の俯瞰参照を足す場合は、その参照から形状だけを継承するのか、場所自体を変えるのかを明記する。固定するものを曖昧にしない。</p></section>
+</main>
+</body>
+</html>

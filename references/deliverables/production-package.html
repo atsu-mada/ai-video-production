@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Production Package</title>
+  <link rel="stylesheet" href="../../assets/knowledge-base.css">
+</head>
+<body>
+<main id="production-package">
+  <nav aria-label="Reference navigation"><a href="../index.html">AI Video Production knowledge map</a></nav>
+  <h1 id="title">Production Package</h1>
+  <p>Create or review the scene-based tree described in <a href="../core/production-order.html">production-order.html</a>.</p>
+  <p>The master index names the project, duration, aspect ratio, style reference, shared assets, and scene ranges. The asset manifest records stable asset ID, type, canonical name, scope, state variant, prompt path, image path, and scenes used. The cut manifest records <code>cut_id</code>, <code>scene_id</code>, <code>start_sec</code>, <code>end_sec</code>, <code>duration_sec</code>, <code>transition</code>, storyboard path, text-storyboard path, prompt path, and output path where available.</p>
+  <p>Use the existing templates in <a href="../../assets/templates/">assets/templates/</a>. Initialize a new empty package with <code>scripts/init_production_package.py</code>; validate it or an existing package with <code>scripts/validate_ai_video.py package &lt;project-root&gt;</code>.</p>
+</main>
+</body>
+</html>

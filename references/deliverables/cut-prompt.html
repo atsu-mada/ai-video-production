@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cut Prompt</title>
+  <link rel="stylesheet" href="../../assets/knowledge-base.css">
+</head>
+<body>
+<main id="cut-prompt">
+  <nav aria-label="Reference navigation"><a href="../index.html">AI Video Production knowledge map</a></nav>
+  <h1 id="title">Cut Prompt</h1>
+  <p>Compile one approved cut into one prompt artifact. Record the stable cut ID, the references, and the fields required by the selected prompt kind. Every local reference uses a canonical Markdown link with a relative target; use an explicit HTTP or HTTPS URL only for an external reference.</p>
+  <p>Choose <a href="../../assets/templates/image-prompt.md">image-prompt.md</a>, <a href="../../assets/templates/image-to-video-prompt.md">image-to-video-prompt.md</a>, or <a href="../../assets/templates/cut-prompt.md">cut-prompt.md</a> for <code>--kind image</code>, <code>--kind image-to-video</code>, or <code>--kind video</code> respectively. An image prompt defines one frozen keyframe and omits duration and temporal continuity fields. Image-to-video and video prompts require a positive duration. If a provider profile is selected, validate that duration against the profile; the generic skill does not impose a universal duration limit. Validate with <code>&lt;verified-cpython-3.14&gt; scripts/validate_ai_video.py cut-prompt &lt;prompt&gt; --kind &lt;image|image-to-video|video&gt; [--check-paths --project-root &lt;project-root&gt;] [--profile &lt;name&gt;]</code>.</p>
+  <h2 id="motion-guidance">Motion guidance</h2>
+  <p>For moving shots, state the initial body placement and contact, preparation, principal action, physical result, and the next stable state. Specify one motivated camera path with height, direction, distance change, speed, endpoint, and visible parallax. Use quiet breathing or eye movement for intentional stillness; begin the main action early in active cuts. Do not rely on adjectives such as cinematic or dynamic without describing visible motion.</p>
+<section lang="ja" aria-labelledby="visible-region"><h2 id="visible-region">見える部位と焦点から参照を選ぶ</h2>
+<p>POV、顔の寄り、手や肩などの身体断片では、可視部位・視線・合焦対象・必要な同一性を先に決める。全身像や強い背景を含む参照が構図へ入り込む場合は、許可された部位参照や除外属性を検討する。撮影意図を、主体の動作、カメラの経路、終了状態へ落とす。</p><p>発話に合わせるカットは<a href="../core/audio-timing.html">音声キューと3つの時間軸</a>を照合する。</p></section>
+</main>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "ai-video-production",
+  "version": "1.0.0",
+  "description": "Plan and validate AI film / music-video production packages: reference sheets, storyboards, cut and scene prompts, and generation handoffs. Planning and prompts only; no media generation.",
+  "author": {
+    "name": "atsu-mada (ATSUFUMI KASHIMA)",
+    "url": "https://github.com/atsu-mada"
+  },
+  "homepage": "https://github.com/atsu-mada/ai-video-production",
+  "repository": "https://github.com/atsu-mada/ai-video-production",
+  "license": "MIT",
+  "keywords": [
+    "ai-video",
+    "preproduction",
+    "storyboard",
+    "prompt",
+    "character-sheet"
+  ],
+  "skills": [
+    "./"
+  ]
+}

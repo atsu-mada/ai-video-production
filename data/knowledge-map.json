@@ -1,0 +1,294 @@
+{
+  "schema_version": 1,
+  "skill_name": "ai-video-production",
+  "topics": [
+    {
+      "id": "index",
+      "path": "references/index.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "AI Video Production Knowledge Map"
+      ],
+      "source_refs": [
+        "baseline-current"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "core-continuity",
+      "path": "references/core/continuity.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "Shared Continuity Rules"
+      ],
+      "source_refs": [
+        "baseline-current",
+        "V3",
+        "V4"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "core-production-order",
+      "path": "references/core/production-order.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "Production Package and Order",
+        "Scene-based Package Layout"
+      ],
+      "source_refs": [
+        "baseline-current"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "core-validation",
+      "path": "references/core/validation.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "Shared Validation and Stop Conditions",
+        "Production Package Validation"
+      ],
+      "source_refs": [
+        "baseline-current",
+        "V7",
+        "S1"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "deliverable-production-package",
+      "path": "references/deliverables/production-package.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "Production Package"
+      ],
+      "source_refs": [
+        "baseline-current"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "deliverable-character-sheet",
+      "path": "references/deliverables/character-sheet.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "Character Sheet"
+      ],
+      "source_refs": [
+        "baseline-current"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "deliverable-environment-sheet",
+      "path": "references/deliverables/environment-sheet.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "Environment Sheet"
+      ],
+      "source_refs": [
+        "baseline-current",
+        "V4"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "deliverable-object-sheet",
+      "path": "references/deliverables/object-sheet.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "Object Sheet"
+      ],
+      "source_refs": [
+        "baseline-current",
+        "V4"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "deliverable-vfx-sheet",
+      "path": "references/deliverables/vfx-sheet.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "VFX Sheet"
+      ],
+      "source_refs": [
+        "baseline-current",
+        "V4"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "deliverable-storyboard",
+      "path": "references/deliverables/storyboard.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "Image-only Storyboard"
+      ],
+      "source_refs": [
+        "baseline-current"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "deliverable-text-storyboard",
+      "path": "references/deliverables/text-storyboard.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "Text Storyboard"
+      ],
+      "source_refs": [
+        "baseline-current"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "deliverable-cut-prompt",
+      "path": "references/deliverables/cut-prompt.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "Cut Prompt"
+      ],
+      "source_refs": [
+        "baseline-current",
+        "V3"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "deliverable-scene-prompt",
+      "path": "references/deliverables/scene-prompt.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "Scene Prompt"
+      ],
+      "source_refs": [
+        "baseline-current"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "deliverable-generation-handoff",
+      "path": "references/deliverables/generation-handoff.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "Generation Handoff"
+      ],
+      "source_refs": [
+        "baseline-current",
+        "V7"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "manifest-contracts",
+      "path": "references/manifest-contracts.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "Manifest Contracts"
+      ],
+      "source_refs": [
+        "baseline-current"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "compatibility-package-layout",
+      "path": "references/package-layout.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "Scene-based Package Layout"
+      ],
+      "source_refs": [
+        "baseline-current"
+      ],
+      "status": "historical"
+    },
+    {
+      "id": "compatibility-validation",
+      "path": "references/validation.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "Production Package Validation"
+      ],
+      "source_refs": [
+        "baseline-current"
+      ],
+      "status": "historical"
+    },
+    {
+      "id": "core-audio-timing",
+      "path": "references/core/audio-timing.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "New topic: 音声の実尺と映像の時間設計"
+      ],
+      "source_refs": [
+        "V3"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "core-editorial-handoff",
+      "path": "references/core/editorial-handoff.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "New topic: 採用版と編集引継ぎ"
+      ],
+      "source_refs": [
+        "V5",
+        "V6"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "deliverables-presentation-handoff",
+      "path": "references/deliverables/presentation-handoff.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "New topic: 紹介素材の引継ぎ（任意）"
+      ],
+      "source_refs": [
+        "V8"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "cases-audio-retiming",
+      "path": "references/cases/audio-retiming.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "New topic: 事例：音声が映像枠に収まらない"
+      ],
+      "source_refs": [
+        "V3"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "cases-editorial-version-selection",
+      "path": "references/cases/editorial-version-selection.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "New topic: 事例：旧構成と新しい生成ジョブを混ぜない"
+      ],
+      "source_refs": [
+        "V6"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "cases-reference-conflict",
+      "path": "references/cases/reference-conflict.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "New topic: 事例：同じ場所が別の広場へ変わる"
+      ],
+      "source_refs": [
+        "V4"
+      ],
+      "status": "active"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manifest Contracts</title>
+  <link rel="stylesheet" href="../assets/knowledge-base.css">
+</head>
+<body>
+<main id="manifest-contracts">
+  <nav aria-label="Reference navigation"><a href="index.html">AI Video Production knowledge map</a></nav>
+  <h1 id="title">Manifest Contracts</h1>
+  <h2 id="cut-manifest">Cut manifest</h2>
+  <table>
+    <thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><code>cut_id</code></td><td>Stable, zero-padded ID such as <code>&lt;CUT_ID&gt;</code>.</td></tr>
+      <tr><td><code>scene_id</code></td><td>Owning scene.</td></tr>
+      <tr><td><code>start_sec</code> / <code>end_sec</code></td><td>Absolute timeline seconds; contiguous unless a deliberate gap is documented.</td></tr>
+      <tr><td><code>duration_sec</code></td><td><code>end_sec - start_sec</code>.</td></tr>
+      <tr><td><code>transition</code></td><td>Cut, dissolve, flash, match cut, or another explicit transition.</td></tr>
+      <tr><td>paths</td><td>Storyboard, text storyboard, prompt, and output paths relative to project root.</td></tr>
+    </tbody>
+  </table>
+  <h2 id="asset-manifest">Asset manifest</h2>
+  <p>Use stable prefixes: <code>C</code> character, <code>E</code> environment, <code>O</code> object, <code>SC</code> scene, <code>CUT</code> cut. Each row records canonical name, scope, state variant, prompt path, image path, and scenes used.</p>
+  <p class="rule">A storyboard is a blocking reference for generation, never an overlay to bake into final footage.</p>
+</main>
+</body>
+</html>

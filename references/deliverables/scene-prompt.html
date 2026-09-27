@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scene Prompt</title>
+  <link rel="stylesheet" href="../../assets/knowledge-base.css">
+</head>
+<body>
+<main id="scene-prompt">
+  <nav aria-label="Reference navigation"><a href="../index.html">AI Video Production knowledge map</a></nav>
+  <h1 id="title">Scene Prompt</h1>
+  <p>Compile one scene-level prompt from approved cuts and references. State the scene ID and time range, objective, start state, end state, visual progression, continuity anchors, approved cut order, camera or lens rhythm, and negative constraints. Keep the scene prompt consistent with its package manifest and selected generation profile.</p>
+  <p>Declare local scene inputs in the <code>## References</code> section with canonical Markdown links and relative targets; external HTTP or HTTPS references remain explicitly external. Do not invent project-specific identities or narration in the generic template. Resolve references from the package when requested, and keep each scene prompt beside the scene package. Validate with <code>&lt;verified-cpython-3.14&gt; scripts/validate_ai_video.py scene-prompt &lt;prompt&gt; [--check-paths --project-root &lt;project-root&gt;] [--profile &lt;name&gt;]</code>.</p>
+  <h2 id="cut-structure">Cut structure</h2>
+  <p>Declare whether the scene is one continuous shot or an ordered multi-cut scene. Never apply a global <code>one continuous shot</code> constraint to a multi-cut scene. For each cut, describe preparation, action, result, camera path, and handoff state. Treat storyboard panels as motion samples rather than render style. Keep the story scene intact when a provider limit requires multiple generation jobs; record the job split separately.</p>
+</main>
+</body>
+</html>

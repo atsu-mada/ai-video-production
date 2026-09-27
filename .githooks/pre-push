@@ -1,0 +1,26 @@
+#!/bin/sh
+# Block pushes that contain private terms.
+# The term list lives outside this public repo so the terms themselves are never published.
+# Enable with: git config core.hooksPath .githooks
+
+DENYLIST="${PUBLIC_SKILL_DENYLIST:-$HOME/agent-skills/config/public-skill-denylist.txt}"
+
+if [ ! -f "$DENYLIST" ]; then
+  echo "pre-push: denylist not found at $DENYLIST; skipping private-term check." >&2
+  exit 0
+fi
+
+patterns=$(grep -vE '^[[:space:]]*(#|$)' "$DENYLIST")
+[ -z "$patterns" ] && exit 0
+
+hits=$(git grep -n -I -i -E -f /dev/stdin HEAD -- . ':!.githooks' <<EOF
+$patterns
+EOF
+)
+
+if [ -n "$hits" ]; then
+  echo "pre-push: private terms found in HEAD; push blocked." >&2
+  echo "$hits" | sed 's/^/  /' >&2
+  exit 1
+fi
+exit 0

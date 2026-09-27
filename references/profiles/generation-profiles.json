@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "generic": {
+      "max_duration_sec": null,
+      "description": "No provider limit is imposed by the generic preproduction skill."
+    },
+    "seedance-2.5": {
+      "max_duration_sec": 30,
+      "description": "Use the current provider contract and scene block limit for Seedance 2.5."
+    },
+    "higgsfield": {
+      "max_duration_sec": null,
+      "description": "Resolve the current Higgsfield model contract at execution time."
+    }
+  }
+}

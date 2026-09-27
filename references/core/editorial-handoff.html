@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>採用版と編集引継ぎ</title>
+<link rel="stylesheet" href="../../assets/knowledge-base.css">
+</head>
+<body><main id="core-editorial-handoff">
+<nav aria-label="Reference navigation"><a href="../index.html">AI Video Production knowledge map</a></nav>
+<h1 id="title">採用版と編集引継ぎ</h1>
+<p>「最新のファイル」を自動採用しない。採用する制作パッケージのIDと改訂版を先に固定し、その版の scene → job → take → 実ファイルを辿れる一覧を作る。別の構成版の生成済みファイルを、同じシーン名という理由だけで混ぜない。</p>
+<h2 id="selection">引継ぎの最小情報</h2><ul>
+<li>順序、scene_id、job_id、take_id、作品内相対パス、SHA-256、実尺。</li>
+<li>仮候補・採用・不採用、技術QC、知覚レビュー、承認の参照、配置理由。</li>
+<li>欠損ジョブ、未生成、生成中、未確認、不合格を区別した残件。</li>
+<li>重複配置や意図的な除外は理由を残す。除外により作品範囲が変わるときは、パッケージの改訂理由と承認を記録する。</li></ul>
+<p>未完の引継ぎは未確定値を null や pending として渡す。再開先に「完了したはず」を補完させず、最後に観測した状態、次の確認行為、再送してはいけない既存ジョブを明示する。</p>
+<h2 id="contract">任意の editorial-selection.json</h2>
+<p>既存10制作モードの必須ファイルは増やさない。編集選択の機械検査が必要な場合だけ、<a href="../../assets/templates/editorial-selection.json">draftテンプレート</a>と<a href="../../schemas/editorial-selection.schema.json">schema</a>を使う。</p>
+<pre><code>&lt;verified-cpython-3.14&gt; scripts/validate_ai_video.py editorial-selection editorial-selection.json --project-root /project/root --check-paths</code></pre>
+<p>mode=draft は未確定を保持する。mode=final は採用状態、正の有限な尺、パスとハッシュ、技術QC合格、知覚レビュー合格、承認参照、欠損なしを要求する。同じjob/takeを再配置するときは placement_reason を付ける。</p>
+<p>straight_cuts の overlap はすべて0。overlap 編集では先頭を0とし、各重なりを隣り合う両クリップの尺未満にする。合計は尺総和から重なりを引く。expected_total_secondsとの差は既定0.1秒以内（--timing-toleranceで明示変更）。</p>
+<p class="rule">検証器が確認するのは記録の整合性。--check-pathsを付けたときだけ実在とハッシュを照合する。実際の再生、実尺の計測、視聴者の判断、人の承認を自動的に証明するものではない。</p>
+<h2 id="editor-check">編集アプリでの確認</h2><ol><li>配置後、各クリップの順序と累積時間を一覧へ照合する。</li><li>編集アプリの保存完了を確認する。</li><li>書き出しファイルは別に存在・実尺・映像/音声・実時間再生を確認する。</li><li>提出・公開は明示された別操作と結果証拠で管理する。</li></ol>
+<p><a href="../cases/editorial-version-selection.html">版選択の事例</a> · <a href="validation.html#evidence-states">状態と証拠の分離</a></p>
+</main></body></html>

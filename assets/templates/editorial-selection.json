@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "mode": "draft",
+  "package_id": "example-package",
+  "package_revision": "draft-1",
+  "edit_style": "straight_cuts",
+  "ordered_items": [
+    {
+      "scene_id": "SCENE_001",
+      "job_id": "job-example-001",
+      "take_id": "take-001",
+      "path": null,
+      "sha256": null,
+      "duration_seconds": null,
+      "selection_status": "provisional",
+      "technical_qc": "not_checked",
+      "perceptual_review": "pending",
+      "approval_ref": null,
+      "placement_reason": null,
+      "overlap_with_previous_seconds": 0
+    }
+  ],
+  "missing_jobs": [],
+  "expected_total_seconds": null
+}

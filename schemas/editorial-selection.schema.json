@@ -1,0 +1,211 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "editorial-selection.schema.json",
+  "title": "AI video editorial selection",
+  "description": "Optional, reviewable ordered clip selection metadata. It records review state; it does not prove media viewing or human approval.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "mode",
+    "package_id",
+    "package_revision",
+    "edit_style",
+    "ordered_items",
+    "missing_jobs",
+    "expected_total_seconds"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "mode": {
+      "enum": [
+        "draft",
+        "final"
+      ]
+    },
+    "package_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "package_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "edit_style": {
+      "enum": [
+        "straight_cuts",
+        "overlap"
+      ]
+    },
+    "ordered_items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ordered_item"
+      }
+    },
+    "missing_jobs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "expected_total_seconds": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    }
+  },
+  "$defs": {
+    "ordered_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scene_id",
+        "job_id",
+        "take_id",
+        "path",
+        "sha256",
+        "duration_seconds",
+        "selection_status",
+        "technical_qc",
+        "perceptual_review",
+        "approval_ref",
+        "placement_reason",
+        "overlap_with_previous_seconds"
+      ],
+      "properties": {
+        "scene_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "job_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "take_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-fA-F]{64}$"
+        },
+        "duration_seconds": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "selection_status": {
+          "enum": [
+            "provisional",
+            "selected",
+            "rejected"
+          ]
+        },
+        "technical_qc": {
+          "enum": [
+            "not_checked",
+            "pass",
+            "fail"
+          ]
+        },
+        "perceptual_review": {
+          "enum": [
+            "pending",
+            "pass",
+            "fail",
+            "uncertain"
+          ]
+        },
+        "approval_ref": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "placement_reason": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "overlap_with_previous_seconds": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "mode": {
+            "const": "final"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "expected_total_seconds": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "missing_jobs": {
+            "maxItems": 0
+          },
+          "ordered_items": {
+            "minItems": 1,
+            "items": {
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "pattern": "\\S"
+                },
+                "sha256": {
+                  "type": "string"
+                },
+                "duration_seconds": {
+                  "type": "number"
+                },
+                "selection_status": {
+                  "const": "selected"
+                },
+                "technical_qc": {
+                  "const": "pass"
+                },
+                "perceptual_review": {
+                  "const": "pass"
+                },
+                "approval_ref": {
+                  "type": "string",
+                  "pattern": "\\S"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
