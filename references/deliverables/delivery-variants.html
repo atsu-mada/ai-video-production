@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Delivery Variants and QA</title>
+  <link rel="stylesheet" href="../../assets/knowledge-base.css">
+</head>
+<body>
+<main id="delivery-variants">
+  <nav aria-label="Reference navigation"><a href="../index.html">AI Video Production knowledge map</a></nav>
+  <h1 id="title">Delivery Variants and QA</h1>
+  <p>Plan platform deliverables from one accepted master edit. A variant changes framing, subtitle placement, and possibly total duration; it never silently changes the edit's content. Record every variant as its own versioned file.</p>
+
+  <h2 id="designed-bands">Aspect-ratio variants with designed bands</h2>
+  <p>When the master is 16:9 and a platform wants 1:1 or 9:16, prefer keeping the full 16:9 picture and filling the remaining area with designed bands over cropping into the action.</p>
+  <ul>
+    <li>Scale the 16:9 picture to the full frame width and center it (or place it slightly above center for 9:16 so the lower band can hold text).</li>
+    <li>Fill the bands with a design that belongs to the film: a matching texture, a blurred and darkened extension of the same frame, or a flat color sampled from the grade. Avoid unrelated stock patterns.</li>
+    <li>Put subtitles and telop inside a band, not over the picture, and keep them inside the platform's UI safe area (see below). Keep the same font, size ratio, and timing across variants.</li>
+    <li>Crop into the picture only when a cut has a single centered subject and the crop is reviewed per cut.</li>
+  </ul>
+  <table>
+    <thead><tr><th>Variant</th><th>Frame</th><th>Picture placement</th><th>Text placement</th></tr></thead>
+    <tbody>
+      <tr><td>16:9</td><td>1920x1080</td><td>full frame</td><td>lower third, inside title-safe margins</td></tr>
+      <tr><td>1:1</td><td>1080x1080</td><td>1080x608 centered</td><td>lower band; keep clear of the bottom caption and control overlay</td></tr>
+      <tr><td>9:16</td><td>1080x1920</td><td>1080x608, centered or slightly high</td><td>band above or below the picture, clear of the top status area, the right-side action column, and the bottom caption area</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="safe-areas">Platform UI safe areas</h2>
+  <p>Vertical feeds overlay the account name, caption, and action buttons on the video. As a planning rule, keep text out of roughly the top 12%, the bottom 20–25%, and the right 12–15% of a 9:16 frame, and out of the bottom 15% of a 1:1 frame. Check a real preview of each platform before final export; overlays change between app versions.</p>
+
+  <h2 id="duration-limits">Platform duration limits</h2>
+  <p>Observed 2026-09; verify live before cutting a variant, because limits differ by account type and change often.</p>
+  <table>
+    <thead><tr><th>Platform</th><th>Observed limit</th><th>Consequence</th></tr></thead>
+    <tbody>
+      <tr><td>X (non-premium account)</td><td>2 min 20 s</td><td>Longer cuts need a shorter variant or a subscription tier.</td></tr>
+      <tr><td>Instagram Reels</td><td>up to 3 min</td><td>Plan the 9:16 or 1:1 variant within 3 min.</td></tr>
+      <tr><td>YouTube</td><td>square or vertical up to 3 min</td><td>Is treated as a Short; a longer or 16:9 upload is a regular video.</td></tr>
+      <tr><td>TikTok</td><td>check live</td><td>Native scheduling observed up to 10 days ahead.</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="delivery-qa">Delivery QA checklist</h2>
+  <ol>
+    <li><code>ffprobe</code> every export: container duration, video duration, and audio duration agree within one frame; resolution, frame rate, and pixel format match the variant.</li>
+    <li>Run <code>blackdetect</code>, <code>freezedetect</code>, and <code>silencedetect</code>; every hit is either intended or fixed.</li>
+    <li>Loudness: measure with <code>ebur128</code> and keep true peak at or below −1 dBTP (apply a limiter if needed).</li>
+    <li>Inspect frames about 0.3 s either side of every cut for flashes, duplicated frames, or mismatched grades.</li>
+    <li>Check subtitle and telop placement per variant against the safe areas.</li>
+    <li>Confirm the total duration fits the platform cap for the target account.</li>
+    <li>If the edit was built by concatenating segments, confirm there is no audio drift (see <a href="../cases/concat-audio-drift.html">concat audio drift</a>).</li>
+    <li>Play each variant end to end in real time before calling it approved; technical checks do not replace viewing.</li>
+  </ol>
+
+  <h2 id="versioning">Version bumping</h2>
+  <ul>
+    <li>Every new output gets a new version suffix, for example <code>&lt;title-slug&gt;_&lt;variant&gt;_v&lt;NN&gt;.mp4</code>. Never overwrite an accepted or delivered version.</li>
+    <li>A fix to one variant bumps that variant only; a fix to the master bumps the master and every variant rebuilt from it.</li>
+    <li>Record which master version each variant was built from.</li>
+  </ul>
+  <p><a href="presentation-handoff.html#publishing">Publishing handoff</a> · <a href="../core/editorial-handoff.html">Editorial handoff</a></p>
+</main>
+</body>
+</html>

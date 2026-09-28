@@ -11,6 +11,16 @@
     "higgsfield": {
       "max_duration_sec": null,
       "description": "Resolve the current Higgsfield model contract at execution time."
+    },
+    "magnific-seedance-2.5": {
+      "max_duration_sec": 24,
+      "resolutions": [
+        "480p",
+        "720p"
+      ],
+      "suite": "magnific-operator",
+      "observed": "2026-09",
+      "description": "Seedance 2.5 through the Magnific suite. 24 s is the longest single job observed to succeed (2026-09), not a published cap; 480p and 720p were the observed output resolutions. Verify the live limit and parameters in magnific-operator before execution."
     }
   }
 }
