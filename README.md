@@ -1,38 +1,40 @@
 # ai-video-production
 
-AI 映画・MV の「生成前」の工程を組み立てて検証するエージェントスキルです。Claude Code と Codex で使えます。
+English · [日本語](README.ja.md)
 
-作者: あつまだ（ATSUFUMI KASHIMA） / GitHub [@atsu-mada](https://github.com/atsu-mada)
+An agent skill that builds and validates the **pre-generation** stage of AI films and music videos. Works with Claude Code and Codex.
 
-## できること
+Author: atsu_mada (ATSUFUMI KASHIMA) / GitHub [@atsu-mada](https://github.com/atsu-mada)
 
-- 制作パッケージ（`00_common/`、シーン、カット manifest）の作成とレビュー
-- キャラクター／環境／小道具／VFX シート
-- 絵コンテ（画像のみ・テキスト付き）
-- カットプロンプト、シーンプロンプト
-- 生成ハンドオフ（プロバイダー、モデル、入力、尺、出力、検証項目を別スキルへ渡す形にまとめる）
-- スイートオペレーター契約（Magnific・TapNow・Higgsfield などの実行スキルが揃える9見出しと命名規則、テンプレート）
-- 16:9 / 1:1 / 9:16 の納品バリアントと納品QA、音声ずれを起こさない連結スクリプト（`scripts/concat_sync.py`）
-- 標準ライブラリだけで動く Python の検証スクリプト
+## What it does
 
-## インストール
+- Creates and reviews production packages (`00_common/`, scenes, cut manifests)
+- Character, environment, prop, and VFX sheets
+- Storyboards (image-only and with text)
+- Cut prompts and scene prompts
+- Generation handoffs (provider, model, inputs, duration, outputs, and checks, packaged for another skill to execute)
+- A suite-operator contract (the nine headings, naming rules, and template shared by execution skills such as Magnific, TapNow, and Higgsfield)
+- 16:9 / 1:1 / 9:16 delivery variants, delivery QA, and a concatenation script that avoids audio drift (`scripts/concat_sync.py`)
+- Python validation scripts that use only the standard library
 
-### Claude Code（プラグイン）
+## Install
+
+### Claude Code (plugin)
 
 ```
 /plugin marketplace add atsu-mada/ai-video-production
 /plugin install ai-video-production@atsu-mada-ai-video-production
 ```
 
-`/ai-video-production:ai-video-production` で呼び出せます。
+Invoke with `/ai-video-production:ai-video-production`.
 
-### Claude Code（手動）
+### Claude Code (manual)
 
 ```bash
 git clone https://github.com/atsu-mada/ai-video-production.git ~/.claude/skills/ai-video-production
 ```
 
-`/ai-video-production` で呼び出せます。
+Invoke with `/ai-video-production`.
 
 ### Codex
 
@@ -40,13 +42,13 @@ git clone https://github.com/atsu-mada/ai-video-production.git ~/.claude/skills/
 git clone https://github.com/atsu-mada/ai-video-production.git ~/.codex/skills/ai-video-production
 ```
 
-`$ai-video-production` で呼び出せます。
+Invoke with `$ai-video-production`.
 
-### 必要なもの
+### Requirements
 
-- Python 3（3.14 で確認）。標準ライブラリのみ。
+- Python 3 (tested on 3.14). Standard library only.
 
-## 検証スクリプトの例
+## Validation script examples
 
 ```bash
 python3 scripts/validate_ai_video.py references .
@@ -54,28 +56,17 @@ python3 scripts/init_production_package.py path/to/project
 python3 scripts/validate_ai_video.py package path/to/project
 ```
 
-## 関連スキル
+## Related skills
 
-- [previz-maker](https://github.com/atsu-mada/previz-maker) — カメラと動線のブロックプレビズと参照プロンプト
-- [seedance-studio](https://github.com/atsu-mada/seedance-studio) — Seedance 2.5 のプロンプト作成（Emily2040/seedance-2.0 の改変フォーク）
+- [previz-maker](https://github.com/atsu-mada/previz-maker) — block previz for camera and blocking, plus a reference prompt
+- [seedance-studio](https://github.com/atsu-mada/seedance-studio) — Seedance 2.5 prompt authoring (a modified fork of Emily2040/seedance-2.0)
 
-## 制限
+## Limitations
 
-- 計画とプロンプト作成のためのスキルです。画像・動画・音声の生成、プロバイダーへの投入、アップロードは行いません。
-- プロバイダーのモデル名、尺の上限、料金は変わります。`references/profiles/generation-profiles.json` は目安です。実行時に各プロバイダーの最新情報を確認してください。
-- 検証スクリプトは構造と記載内容を確認するもので、映像の品質や承認を保証しません。
+- This skill is for planning and prompt authoring. It does not generate images, video, or audio, submit jobs to providers, or upload anything.
+- Provider model names, duration limits, and pricing change. `references/profiles/generation-profiles.json` is a guide only; check each provider's current information at run time.
+- The validation scripts check structure and required content. They do not guarantee visual quality or approval.
 
-## ライセンス
+## License
 
 [MIT](LICENSE) © 2026 atsu_mada (ATSUFUMI KASHIMA)
-
----
-
-## English
-
-An agent skill for Claude Code and Codex that plans and validates AI film / music-video production packages: character, environment, object and VFX sheets, image-only and text storyboards, cut and scene prompts, and generation handoffs. Includes stdlib-only Python validators.
-
-- Claude Code plugin: `/plugin marketplace add atsu-mada/ai-video-production`, then `/plugin install ai-video-production@atsu-mada-ai-video-production`.
-- Manual: `git clone https://github.com/atsu-mada/ai-video-production.git ~/.claude/skills/ai-video-production` (or `~/.codex/skills/ai-video-production` for Codex).
-
-Planning and prompt authoring only; it never generates, submits, or uploads media. License: MIT.
