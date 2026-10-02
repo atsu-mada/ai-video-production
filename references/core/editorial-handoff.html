@@ -22,6 +22,7 @@
 <p>mode=draft は未確定を保持する。mode=final は採用状態、正の有限な尺、パスとハッシュ、技術QC合格、知覚レビュー合格、承認参照、欠損なしを要求する。同じjob/takeを再配置するときは placement_reason を付ける。</p>
 <p>straight_cuts の overlap はすべて0。overlap 編集では先頭を0とし、各重なりを隣り合う両クリップの尺未満にする。合計は尺総和から重なりを引く。expected_total_secondsとの差は既定0.1秒以内（--timing-toleranceで明示変更）。</p>
 <p class="rule">検証器が確認するのは記録の整合性。--check-pathsを付けたときだけ実在とハッシュを照合する。実際の再生、実尺の計測、視聴者の判断、人の承認を自動的に証明するものではない。</p>
+<h2 id="concat-drift">連結時の音声ずれ</h2><p>生成クリップを <code>-c copy</code> でそのまま連結すると、各素材の音声尺と映像尺の差が継ぎ目ごとに積み重なり、後半で音がずれる。映像はコピー連結し、音声は各素材の映像尺に切りそろえて（不足は無音で埋めて）filter で連結する。<a href="../../scripts/concat_sync.py">scripts/concat_sync.py</a> がこの手順を行う。詳細は<a href="../cases/concat-audio-drift.html">連結で音声がずれる事例</a>。</p>
 <h2 id="editor-check">編集アプリでの確認</h2><ol><li>配置後、各クリップの順序と累積時間を一覧へ照合する。</li><li>編集アプリの保存完了を確認する。</li><li>書き出しファイルは別に存在・実尺・映像/音声・実時間再生を確認する。</li><li>提出・公開は明示された別操作と結果証拠で管理する。</li></ol>
 <p><a href="../cases/editorial-version-selection.html">版選択の事例</a> · <a href="validation.html#evidence-states">状態と証拠の分離</a></p>
 </main></body></html>

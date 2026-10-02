@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>事例：連結で音声がずれる</title>
+<link rel="stylesheet" href="../../assets/knowledge-base.css">
+</head>
+<body><main id="cases-concat-audio-drift">
+<nav aria-label="Reference navigation"><a href="../index.html">AI Video Production knowledge map</a></nav>
+<h1 id="title">事例：連結で音声がずれる</h1>
+<p>過去の編集記録を一般化した例。特定の作品や現在のツールの挙動を保証するものではない。</p>
+<h2 id="observation">観測</h2><p>生成クリップを ffmpeg の concat デマクサと <code>-c copy</code> でそのまま連結すると、AAC 音声の各素材は映像より少し長い・短いことが多く、継ぎ目ごとの差が積み重なって後半ほど口や動作と音がずれた。観測では最大で約0.6秒のずれになった。</p>
+<h2 id="technique">手法</h2><ol>
+<li>映像は <code>-c copy</code> で連結する（コーデック・解像度・フレームレート・画素形式が揃っている前提）。</li>
+<li>各素材の音声を、その素材の映像尺ちょうどに切りそろえる。足りなければ無音で埋め、音声が無い素材には同じ長さの無音を当てる。</li>
+<li>揃えた音声を filter の concat で連結し、再エンコードして映像と多重化する。</li>
+<li>書き出し後に映像尺と音声尺の差を ffprobe で確認する。</li></ol>
+<p>スクリプト：<a href="../../scripts/concat_sync.py">scripts/concat_sync.py</a>（標準ライブラリのみ、ffmpeg / ffprobe を使用）。</p>
+<pre><code>&lt;verified-cpython-3.14&gt; scripts/concat_sync.py list.txt out_v01.mp4 --audio-bitrate 256k</code></pre>
+<p class="rule">音声を映像に合わせて切るため、素材の末尾の余韻が切れることがある。意図した音の尾が必要なら、編集アプリでオーバーラップとして設計する。</p>
+<p><a href="../core/editorial-handoff.html">採用版と編集引継ぎへ戻る</a> · <a href="../deliverables/delivery-variants.html#delivery-qa">納品QA</a></p>
+</main></body></html>

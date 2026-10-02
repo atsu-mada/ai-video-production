@@ -32,6 +32,14 @@
     <li>Treat a storyboard as a blocking reference. It does not become a compositing layer or a final-frame overlay.</li>
     <li>Describe VFX geometry, material, optical behavior, and state transitions separately from storyboard marks.</li>
   </ul>
+  <h2 id="spatial-anchor">Spatial anchor continuity</h2>
+  <p>A large physical anchor (a planet, a building, a vehicle, a landmark) is one object in one place for the whole continuous shot or sequence.</p>
+  <ul>
+    <li>Camera motion changes where the anchor sits on screen; the anchor itself does not move, duplicate, or reappear from another direction.</li>
+    <li>Before a move, write where the anchor is relative to the camera and subject (for example "below and ahead of the craft"), and after the move, where it must therefore appear on screen.</li>
+    <li>If the anchor leaves frame, it returns only from the side the camera path implies. Never re-introduce it as a new entrance from elsewhere.</li>
+    <li>In previz and prompts, state "the same &lt;anchor&gt; stays in its original position; only the camera moves" and check the first and last frames of each job against that plan.</li>
+  </ul>
 <section lang="ja" aria-labelledby="reference-scope"><h2 id="reference-scope">参照の可視範囲と除外属性</h2>
 <p>ショットで実際に見える身体部位、視線の相手、焦点対象を先に決める。POVで人物の身体が見えないなら、人物の全身参照を機械的に追加しない。顔の寄りには顔、身体断片には該当部位など、必要な同一性だけを渡す。参照ごとに継承する形・材質・位置と、継承しない画角・背景・状態を記録する。</p><p>カメラ経路の全域を同じ環境設計で支え、途中で見えるランドマークと接続点を確認する。競合が起きたら、<a href="../cases/reference-conflict.html">観測と原因仮説を分けた比較</a>を行う。</p></section>
 </main>

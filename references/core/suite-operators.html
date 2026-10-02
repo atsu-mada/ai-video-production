@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Suite Operators</title>
+  <link rel="stylesheet" href="../../assets/knowledge-base.css">
+</head>
+<body>
+<main id="suite-operators">
+  <nav aria-label="Reference navigation"><a href="../index.html">AI Video Production knowledge map</a></nav>
+  <h1 id="title">Suite Operators</h1>
+  <p>A <strong>suite operator</strong> is an execution skill that drives exactly one AI creative suite (for example a generation platform reached through MCP, an API, a CLI, or a logged-in browser UI). Preproduction skills such as this one stay suite-neutral: they author references, storyboards, prompts, and a <a href="../deliverables/generation-handoff.html">generation handoff</a>. The handoff's <code>Suite:</code> field names the operator skill that will execute it. Tool names, model slugs, credit prices, and UI steps live in the operator, never here.</p>
+
+  <h2 id="boundary">Division of responsibility</h2>
+  <table>
+    <thead><tr><th>Preproduction (this skill, previz, prompt skills)</th><th>Suite operator</th></tr></thead>
+    <tbody>
+      <tr><td>Story scene, cut, beat, and job mapping</td><td>Translating one job into the suite's tools and parameters</td></tr>
+      <tr><td>Reference roles and excluded attributes</td><td>Upload, tagging syntax, and count limits of that suite</td></tr>
+      <tr><td>Target duration, aspect ratio, output contract</td><td>Whether the suite can meet them today (verify live)</td></tr>
+      <tr><td>Approval state recorded in the handoff</td><td>Quoting cost, waiting for the user's OK, running, retrieving</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="contract">The nine-heading contract</h2>
+  <p>Every suite operator SKILL.md documents these sections with exactly these headings, in this order, so that an agent can compare suites without reading each one end to end. Start from the <a href="../../assets/templates/suite-operator-template.md">suite-operator template</a>.</p>
+  <ol>
+    <li><strong>Access path</strong> — MCP, API, CLI, or Chrome UI; who owns authentication; what the agent may and may not click or call.</li>
+    <li><strong>Models &amp; modes</strong> — available video, image, and audio models; supported modes (text-to-video, image-to-video, reference-to-video, first/last frame, extend) and mutually exclusive combinations.</li>
+    <li><strong>References</strong> — accepted reference types (image, video, audio, character), count limits, tagging syntax, and minimum lengths.</li>
+    <li><strong>Limits</strong> — durations, resolutions, aspect ratios, concurrency, and file-size or upload limits.</li>
+    <li><strong>Cost estimation</strong> — how to estimate before running, known gaps between estimate and actual charge, and the approval gate (quote, user OK, run).</li>
+    <li><strong>Moderation &amp; failure</strong> — what a block looks like, whether it is charged, and the retry and rewording procedure.</li>
+    <li><strong>Post-processing</strong> — upscale or enhance modes and which content each suits.</li>
+    <li><strong>Retrieval</strong> — how to wait for results, register downloads, and name versioned files.</li>
+    <li><strong>Approval gates</strong> — previz must be visually approved by the user before paid generation; every paid step needs a quoted estimate.</li>
+  </ol>
+  <p class="rule">Record every limit and price as "observed YYYY-MM" with a verify-live caveat. Never write account balances, share URLs, account handles, or project names into an operator skill.</p>
+
+  <h2 id="shared-client-contract">Shared client contract</h2>
+  <ul>
+    <li>Input is one reviewed generation handoff whose <code>Suite:</code> equals the operator's skill name. If it names another suite, stop and route instead of translating silently.</li>
+    <li>A handoff is not an order to run. The operator quotes cost, waits for an explicit user OK, and only then submits.</li>
+    <li>Report provider state, technical QC, and perceptual review as separate evidence states (see <a href="validation.html#evidence-states">validation</a>).</li>
+    <li>Never regenerate a queued or running job; search for existing results before re-running or re-upscaling.</li>
+    <li>Download every accepted output to a new versioned path; never overwrite an accepted version.</li>
+    <li>Keep internal job identifiers out of user-facing messages unless asked.</li>
+  </ul>
+
+  <h2 id="registry">Registry</h2>
+  <table>
+    <thead><tr><th>Operator skill</th><th>Access path</th><th>Status</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td><code>magnific-operator</code></td><td>MCP</td><td>new</td><td>Whole-suite operator: video, image, audio, upscale, and canvas-style workflows through MCP tools.</td></tr>
+      <tr><td><code>tapnow-chrome-operator</code></td><td>Chrome UI</td><td>existing</td><td>Prepares canvas nodes and reference chips in the user's browser; stops before generation.</td></tr>
+      <tr><td><code>higgsfield-video-generator</code></td><td>CLI (compatibility alias)</td><td>existing</td><td>Routes video generation to the provider's official CLI skill.</td></tr>
+      <tr><td>future operators (for example a Krea operator)</td><td>any</td><td>planned</td><td>Must follow the template and the naming policy below before being added here.</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="naming">Naming policy</h2>
+  <p>Operator skill names follow <code>&lt;service&gt;[-chrome]-&lt;action&gt;-&lt;role&gt;</code>:</p>
+  <ul>
+    <li><code>-chrome</code> appears only when the skill operates a browser UI.</li>
+    <li><code>&lt;action&gt;</code> is omitted for a whole-suite operator (for example <code>&lt;service&gt;-operator</code>).</li>
+    <li><code>&lt;role&gt;</code> is one of <code>operator</code>, <code>publisher</code>, <code>generator</code>, or <code>maker</code>.</li>
+  </ul>
+
+  <h2 id="choosing">Choosing a suite</h2>
+  <ol>
+    <li><strong>Capability fit</strong> — the required mode exists (for example reference-to-video with a previz video, or first/last frame for a partial retake) and the target duration and resolution fit one job.</li>
+    <li><strong>Reference types</strong> — the suite accepts every reference role the handoff needs (image, video, audio, character) within its count limits. Note exclusive combinations such as boundary frames versus general references.</li>
+    <li><strong>Cost</strong> — compare the quoted per-second or per-job cost, including known estimate gaps and post-processing, against the remaining budget the user states.</li>
+    <li><strong>Availability</strong> — authentication works, the access path is permitted for the agent, and queues or usage limits will not block the schedule.</li>
+  </ol>
+  <p>Record the choice and its reason in the handoff. When two suites fit, prefer the one whose failure and retrieval behavior is documented in its operator skill.</p>
+</main>
+</body>
+</html>

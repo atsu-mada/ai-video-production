@@ -1,6 +1,7 @@
 # Generation Handoff
 
 ```text
+Suite: <suite operator skill, e.g. magnific-operator>
 Provider profile: <profile name>
 Model: <model name>
 Execution skill: <$provider-skill>
