@@ -50,8 +50,20 @@
     <li>Create image-only storyboard.</li>
     <li>Create paired text storyboard.</li>
     <li>Write cut prompts.</li>
+    <li>Get previz visual approval and a quoted estimate.</li>
     <li>Generate clips and edit only when separately requested.</li>
+    <li>Build delivery variants and run delivery QA.</li>
   </ol>
+
+  <h2 id="approval-gates">Approval gates</h2>
+  <ul>
+    <li><strong>Previz visual approval</strong> — send the rendered previz (video or contact sheet) to the user and wait for an explicit visual OK before any paid generation that uses it.</li>
+    <li><strong>Quote before paid steps</strong> — every paid step (generation, retake, extend, upscale) is preceded by a quoted estimate from the <a href="suite-operators.html">suite operator</a> and the user's explicit OK. One approval covers one quoted step, not later ones.</li>
+    <li>A handoff marked approved for generation records the approval; it does not replace the quote.</li>
+  </ul>
+
+  <h2 id="version-bump">Version bump rule</h2>
+  <p>Every regenerated clip, edit, and export gets a new version suffix (<code>_v&lt;NN&gt;</code>). Never overwrite an accepted or delivered version; record which inputs each version was built from. See <a href="../deliverables/delivery-variants.html#versioning">delivery variants</a>.</p>
 
   <p class="rule">Place recurring or independently reusable assets in <code>00_common/</code>. Keep transient states and scene-only assets inside the owning scene. Keep each prompt beside its declared image or video output path. Leave existing drafts in place unless migration or deletion is explicitly requested.</p>
   <p>Build in this order: style and timing, recurring assets, environment and object references, image-only storyboard, paired text storyboard, cut prompts, scene prompt, generation handoff, then provider execution when separately requested.</p>

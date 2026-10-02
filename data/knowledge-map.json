@@ -24,7 +24,8 @@
       "source_refs": [
         "baseline-current",
         "V3",
-        "V4"
+        "V4",
+        "suite-operators-2026-09"
       ],
       "status": "active"
     },
@@ -37,7 +38,8 @@
         "Scene-based Package Layout"
       ],
       "source_refs": [
-        "baseline-current"
+        "baseline-current",
+        "suite-operators-2026-09"
       ],
       "status": "active"
     },
@@ -177,7 +179,8 @@
       ],
       "source_refs": [
         "baseline-current",
-        "V7"
+        "V7",
+        "suite-operators-2026-09"
       ],
       "status": "active"
     },
@@ -238,7 +241,8 @@
       ],
       "source_refs": [
         "V5",
-        "V6"
+        "V6",
+        "suite-operators-2026-09"
       ],
       "status": "active"
     },
@@ -250,7 +254,8 @@
         "New topic: 紹介素材の引継ぎ（任意）"
       ],
       "source_refs": [
-        "V8"
+        "V8",
+        "suite-operators-2026-09"
       ],
       "status": "active"
     },
@@ -287,6 +292,42 @@
       ],
       "source_refs": [
         "V4"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "core-suite-operators",
+      "path": "references/core/suite-operators.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "New topic: Suite Operators"
+      ],
+      "source_refs": [
+        "suite-operators-2026-09"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "deliverables-delivery-variants",
+      "path": "references/deliverables/delivery-variants.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "New topic: Delivery Variants and QA"
+      ],
+      "source_refs": [
+        "suite-operators-2026-09"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "cases-concat-audio-drift",
+      "path": "references/cases/concat-audio-drift.html",
+      "anchor": "title",
+      "legacy_sections": [
+        "New topic: 事例：連結で音声がずれる"
+      ],
+      "source_refs": [
+        "suite-operators-2026-09"
       ],
       "status": "active"
     }

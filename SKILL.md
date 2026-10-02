@@ -18,7 +18,7 @@ Use this skill as the generic preproduction router for an AI film or music-video
 - **Text storyboard** — pair the image storyboard with timing, framing/lens, and one camera instruction per panel. Read [text-storyboard.html](references/deliverables/text-storyboard.html).
 - **Cut prompt** — compile one approved cut into an image, image-to-video, or video prompt. Read [cut-prompt.html](references/deliverables/cut-prompt.html).
 - **Scene prompt** — compile a scene-level continuity and progression prompt from approved cuts. Read [scene-prompt.html](references/deliverables/scene-prompt.html).
-- **Generation handoff** — package provider, model, inputs, duration, output, and validation information for a separate execution skill. Read [generation-handoff.html](references/deliverables/generation-handoff.html).
+- **Generation handoff** — package the suite operator (`Suite:`), provider, model, inputs, duration, output, and validation information for a separate execution skill. Read [generation-handoff.html](references/deliverables/generation-handoff.html).
 
 ## Shared rules
 
@@ -29,7 +29,7 @@ Use this skill as the generic preproduction router for an AI film or music-video
 5. Separate a reusable object's construction from its scene-specific visible state. Use dedicated state references when a screen, page, reflection, control, opening, damage state, or emitted effect changes between cuts.
 6. Keep production labels, captions, watermarks, and storyboard marks out of generated footage. Meaningful in-world writing and ordinary UI are allowed when the story requires them; define their exact state outside the storyboard.
 7. Distinguish story scene, editorial cut, motion beat, and provider generation job. Preserve the story scene even when provider limits require several jobs.
-8. A prompt or handoff does not authorize a generation job. Use the selected provider skill only after the user separately requests generation or submission.
+8. A prompt or handoff does not authorize a generation job. Use the selected provider skill only after the user separately requests generation or submission. Paid steps also need previz visual approval and a quoted estimate ([approval gates](references/core/production-order.html#approval-gates)).
 
 ## Progressive references and validation
 
@@ -44,4 +44,6 @@ Use this skill as the generic preproduction router for an AI film or music-video
 
 - When audio timing changes, read [audio timing](references/core/audio-timing.html).
 - When selecting takes or handing a version to an editor, read [editorial handoff](references/core/editorial-handoff.html). The optional selection validator checks records, not viewing or approval.
-- When preparing titles, loglines, or thumbnails, read [presentation handoff](references/deliverables/presentation-handoff.html). This is optional supporting material, not another mandatory production mode.
+- When choosing or adding an execution suite, read [suite operators](references/core/suite-operators.html); new operators start from [the template](assets/templates/suite-operator-template.md).
+- When preparing 16:9 / 1:1 / 9:16 deliverables or final QA, read [delivery variants](references/deliverables/delivery-variants.html). Join segments without audio drift with `<verified-cpython-3.14> scripts/concat_sync.py list.txt out_vNN.mp4 [--audio-bitrate 256k]`.
+- When preparing titles, loglines, thumbnails, or post copy, read [presentation handoff](references/deliverables/presentation-handoff.html). This is optional supporting material, not another mandatory production mode.

@@ -76,6 +76,8 @@ CANONICAL_KNOWLEDGE_PATHS = {
     "references/manifest-contracts.html",
     "references/package-layout.html",
     "references/validation.html",
+    "references/core/suite-operators.html",
+    "references/deliverables/delivery-variants.html",
 }
 KNOWLEDGE_CONTENT_MARKERS = {
     "references/core/continuity.html": ("object state", "storyboard blocking"),
@@ -94,6 +96,8 @@ KNOWLEDGE_CONTENT_MARKERS = {
     "references/manifest-contracts.html": ("cut_id", "Asset manifest"),
     "references/package-layout.html": ("canonical package layout", "production-order.html"),
     "references/validation.html": ("canonical validation rules", "body is maintained"),
+    "references/core/suite-operators.html": ("Access path", "Approval gates", "Registry"),
+    "references/deliverables/delivery-variants.html": ("designed bands", "Delivery QA checklist"),
 }
 HANDOFF_FIELDS = (
     "Provider profile:",
@@ -107,6 +111,9 @@ HANDOFF_FIELDS = (
     "Approval state:",
     "Submission:",
 )
+OPTIONAL_HANDOFF_FIELDS = ("Suite:",)
+SUITE_OPERATOR_ROLES = ("operator", "publisher", "generator", "maker")
+SUITE_NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 
 
 def png_ratio(path: Path) -> float:
@@ -798,7 +805,7 @@ def _handoff_field_value(text: str, field: str, match: re.Match[str]) -> str:
         return value
     next_starts = [
         other_match.start()
-        for other in HANDOFF_FIELDS
+        for other in HANDOFF_FIELDS + OPTIONAL_HANDOFF_FIELDS
         for other_match in _handoff_field_matches(text, other)
         if other_match.start() > match.end()
     ]
@@ -819,7 +826,33 @@ def _parse_handoff_fields(text: str) -> tuple[dict[str, str], list[str]]:
         values[field] = value
         if not value:
             errors.append(f"required field is empty: {field}")
+    for field in OPTIONAL_HANDOFF_FIELDS:
+        matches = _handoff_field_matches(text, field)
+        if not matches:
+            continue
+        if len(matches) != 1:
+            errors.append(f"optional field must appear at most once: {field}")
+            continue
+        value = _handoff_field_value(text, field, matches[0])
+        values[field] = value
+        if not value:
+            errors.append(f"field is empty: {field}")
     return values, errors
+
+
+def _suite_errors(value: str | None, *, required: bool) -> tuple[list[str], list[str]]:
+    """Return (errors, warnings) for the handoff Suite field."""
+    if value is None:
+        message = "handoff has no Suite: field naming the suite operator skill"
+        return ([message], []) if required else ([], [message + " (legacy handoff accepted)"])
+    name = value.strip().lstrip("$/")
+    if not name:
+        return [], []
+    if not SUITE_NAME_RE.fullmatch(name):
+        return [f"Suite: must be a lowercase hyphenated skill name: {value}"], []
+    if name.rsplit("-", 1)[-1] not in SUITE_OPERATOR_ROLES:
+        return [f"Suite: must end with a role ({', '.join(SUITE_OPERATOR_ROLES)}): {value}"], []
+    return [], []
 
 
 def _handoff_duration(value: str | None) -> tuple[float | None, str | None]:
@@ -843,6 +876,10 @@ def validate_handoff(args: argparse.Namespace) -> list[str]:
     text, errors = read_prompt(args.prompt)
     fields, field_errors = _parse_handoff_fields(text)
     errors += field_errors
+    suite_errors, suite_warnings = _suite_errors(fields.get("Suite:"), required=getattr(args, "require_suite", False))
+    errors += suite_errors
+    for warning in suite_warnings:
+        print(f"WARNING: {warning}")
     if re.search(r"<[^>\n]+>", text):
         errors.append("handoff contains unresolved angle-bracket placeholder")
     embedded_profile = fields.get("Provider profile:", "")
@@ -1620,7 +1657,8 @@ def build_parser() -> argparse.ArgumentParser:
     cut_prompt = add_prompt_parser(subparsers, "cut-prompt", validate_cut_prompt, profile=True, paths=True)
     cut_prompt.add_argument("--kind", choices=("image", "image-to-video", "video"), default="video")
     add_prompt_parser(subparsers, "scene-prompt", validate_scene_prompt, profile=True, paths=True)
-    add_prompt_parser(subparsers, "handoff", validate_handoff, profile=True, paths=True)
+    handoff = add_prompt_parser(subparsers, "handoff", validate_handoff, profile=True, paths=True)
+    handoff.add_argument("--require-suite", action="store_true", help="fail when the Suite: field is missing")
     editorial = subparsers.add_parser("editorial-selection")
     editorial.set_defaults(function=validate_editorial_selection)
     editorial.add_argument("selection", type=Path)
